@@ -3,5 +3,3 @@ import setup
 
 RPL.servoWrite(0, 950)
 RPL.servoWrite(1, 1940)
-
-Print 'Claw closed'
