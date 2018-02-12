@@ -35,6 +35,17 @@ def R_close():
   print ("Left servo step close")
 
 # inputs
+def interrupted(signum, frame): # this is the method called at the end of the alarm
+  stopAll()
+
+signal.signal(signal.SIGALRM, interrupted) # this calls the 'interrupted' method when the alarm goes off
+tty.setraw(sys.stdin.fileno()) # this sets the style of the input
+
+print "Ready To Drive! Press * to quit.\r"
+## the SHORT_TIMEOUT needs to be greater than the press delay on your keyboard
+## on your computer, set the delay to 250 ms with `xset r rate 250 20`
+SHORT_TIMEOUT = 0.255 # number of seconds your want for timeout
+
 while True:
   signal.setitimer(signal.ITIMER_REAL,SHORT_TIMEOUT) # this sets the alarm
   ch = sys.stdin.read(1) # this reads one character of input without requiring an enter keypress
