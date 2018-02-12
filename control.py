@@ -22,16 +22,18 @@ def R_RN():
 # L and R open and close
 def L_open():
   RPL.servoWrite(L_Pin,L_RN - 10)
-Print ("Left servo step open")
+  print ("Left servo step open")
+
 def L_close():
   RPL.servoWrite(L_Pin,L_RN + 10)
-Print ("Left servo step close")
+  print ("Left servo step close")
 def R_open():
   RPL.servoWrite(R_Pin,R_RN + 10)
-Print ("right servo step open")
+import pdb; pdb.set_trace()
+print ("right servo step open")
 def R_close():
   RPL.servoWrite(R_Pin,R_RN - 10)
-Print ("Left servo step close")
+  print ("Left servo step close")
 
 # inputs
 while True:
