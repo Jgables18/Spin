@@ -29,8 +29,7 @@ def L_close():
   print ("Left servo step close")
 def R_open():
   RPL.servoWrite(R_Pin,R_RN + 10)
-import pdb; pdb.set_trace()
-print ("right servo step open")
+  print ("right servo step open")
 def R_close():
   RPL.servoWrite(R_Pin,R_RN - 10)
   print ("Left servo step close")
