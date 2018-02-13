@@ -7,34 +7,44 @@ L_Pin = 0
 R_Pin = 1
 
 # Maximum Range
-R_min = 2500
-R_max = 1940
-L_min = 500
-L_max = 950
+#R_min = 2500
+#R_max = 1940
+#L_min = 500
+#L_max = 950
 
 # Motor RN
 def L_RN():
     RPL.servoRead(L_Pin)
+    print L_RN
 
 def R_RN():
     RPL.servoRead(R_Pin)
+    print R_RN
 
 # L and R open and close
 def L_open():
-  RPL.servoWrite(L_Pin,L_RN - 10)
-  print ("Left servo step open")
+    RPL.servoWrite(L_Pin,L_RN - 10)
+    print ("Left servo step open")
 
 def L_close():
-  RPL.servoWrite(L_Pin,L_RN + 10)
-  print ("Left servo step close")
-def R_open():
-  RPL.servoWrite(R_Pin,R_RN + 10)
-  print ("right servo step open")
-def R_close():
-  RPL.servoWrite(R_Pin,R_RN - 10)
-  print ("Left servo step close")
+    RPL.servoWrite(L_Pin,L_RN + 10)
+    print ("Left servo step close")
 
-# inputs
+def R_open():
+    RPL.servoWrite(R_Pin,R_RN + 10)
+    print ("right servo step open")
+
+def R_close():
+    RPL.servoWrite(R_Pin,R_RN - 10)
+    print ("Left servo step close")
+
+fd = sys.stdin.fileno() # I don't know what this does
+old_settings = termios.tcgetattr(fd) # this records the existing console settings that are later changed with the tty.setraw... line so that they can be replaced when the loop ends
+
+######################################
+## Other motor commands should go here
+######################################
+
 def interrupted(signum, frame): # this is the method called at the end of the alarm
   stopAll()
 
@@ -45,7 +55,6 @@ print "Ready To Drive! Press * to quit.\r"
 ## the SHORT_TIMEOUT needs to be greater than the press delay on your keyboard
 ## on your computer, set the delay to 250 ms with `xset r rate 250 20`
 SHORT_TIMEOUT = 0.255 # number of seconds your want for timeout
-
 while True:
   signal.setitimer(signal.ITIMER_REAL,SHORT_TIMEOUT) # this sets the alarm
   ch = sys.stdin.read(1) # this reads one character of input without requiring an enter keypress
@@ -55,12 +64,12 @@ while True:
     break # this ends the loop
 else:
     if ch == 'w':
-      L_close
+        L_close()
     elif ch == "a":
-      L_open
+        L_open()
     elif ch == "s":
-      R_open
+        R_close()
     elif ch == "d":
-      R_close
+        R_open()
     else:
       stopAll()
