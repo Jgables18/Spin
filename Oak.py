@@ -3,6 +3,9 @@ RPL.RoboPiInit("/dev/ttyAMA0",115200)
 
 import sys, tty, termios, signal
 
+def stopAll():
+  print "Failed"
+  
 def forward():
   print "Forward"
 
