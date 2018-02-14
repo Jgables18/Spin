@@ -18,19 +18,19 @@ def R_RN():
     print R_RN
 
 def L_open():
-    RPL.servoWrite(L_Pin,L_RN - 10)
+    RPL.servoWrite(0,L_RN - 10)
     print ("Left servo step open")
 
 def L_close():
-    RPL.servoWrite(L_Pin,L_RN + 10)
+    RPL.servoWrite(0,L_RN + 10)
     print ("Left servo step close")
 
 def R_open():
-    RPL.servoWrite(R_Pin,R_RN + 10)
+    RPL.servoWrite(1,R_RN + 10)
     print ("right servo step open")
 
 def R_close():
-    RPL.servoWrite(R_Pin,R_RN - 10)
+    RPL.servoWrite(1,R_RN - 10)
     print ("Left servo step close")
 
 fd = sys.stdin.fileno() # I don't know what this does
