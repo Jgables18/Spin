@@ -43,7 +43,7 @@ old_settings = termios.tcgetattr(fd) # this records the existing console setting
 ######################################
 
 def interrupted(signum, frame): # this is the method called at the end of the alarm
-  stopAll()
+    stopAll()
 
 signal.signal(signal.SIGALRM, interrupted) # this calls the 'interrupted' method when the alarm goes off
 tty.setraw(sys.stdin.fileno()) # this sets the style of the input
