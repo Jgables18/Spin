@@ -59,12 +59,12 @@ while True:
     break # this ends the loop
   else:
     if ch == 'w':
-      forward()
+      L_close
     elif ch == "a":
-      left()
+      L_open
     elif ch == "s":
-      reverse()
+      R_close
     elif ch == "d":
-      right()
+      R_open
     else:
       stopAll()
