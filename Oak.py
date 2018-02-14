@@ -60,11 +60,15 @@ while True:
   else:
     if ch == 'w':
       L_close
+      print "left closed"
     elif ch == "a":
       L_open
+      print "left opened"
     elif ch == "s":
       R_close
+      print "right close"
     elif ch == "d":
       R_open
+      print "right opened"
     else:
       stopAll()
