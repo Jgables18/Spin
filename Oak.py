@@ -3,20 +3,37 @@ RPL.RoboPiInit("/dev/ttyAMA0",115200)
 
 import sys, tty, termios, signal
 
-def stopAll():
-  print "Failed"
-  
-def forward():
-  print "Forward"
+L_Pin = 0
+R_Pin = 1
 
-def reverse():
-  print "Reverse"
+def L_RN():
+    RPL.servoRead(L_Pin)
+    print L_RN
 
-def right():
-  print "Right"
+def R_RN():
+    RPL.servoRead(R_Pin)
+    print R_RN
 
-def left():
-  print "Left"
+# L and R open and close
+def stopall():
+    RPL.servoWrite(L_Pin,L_RN)
+    RPL.servoWrite(R_Pin,R_RN)
+
+def L_open():
+    RPL.servoWrite(L_Pin,L_RN - 10)
+    print ("Left servo step open")
+
+def L_close():
+    RPL.servoWrite(L_Pin,L_RN + 10)
+    print ("Left servo step close")
+
+def R_open():
+    RPL.servoWrite(R_Pin,R_RN + 10)
+    print ("right servo step open")
+
+def R_close():
+    RPL.servoWrite(R_Pin,R_RN - 10)
+    print ("Left servo step close")
 
 fd = sys.stdin.fileno() # I don't know what this does
 old_settings = termios.tcgetattr(fd) # this records the existing console settings that are later changed with the tty.setraw... line so that they can be replaced when the loop ends
