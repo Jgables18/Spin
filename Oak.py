@@ -6,6 +6,9 @@ import sys, tty, termios, signal
 L_Pin = 0
 R_Pin = 1
 
+def stopAll():
+    pass
+
 def L_RN():
     RPL.servoRead(L_Pin)
     print L_RN
@@ -37,10 +40,7 @@ old_settings = termios.tcgetattr(fd) # this records the existing console setting
 ## Other motor commands should go here
 ######################################
 
-def stopall():
-    pass
-
-def interrupted(signum, frame): # this is the method called at the end of the alarm
+def interrupted(signum, frame):
     stopAll()
 
 signal.signal(signal.SIGALRM, interrupted) # this calls the 'interrupted' method when the alarm goes off
