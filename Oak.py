@@ -14,11 +14,6 @@ def R_RN():
     RPL.servoRead(R_Pin)
     print R_RN
 
-# L and R open and close
-def stopall():
-    RPL.servoWrite(L_Pin,L_RN)
-    RPL.servoWrite(R_Pin,R_RN)
-
 def L_open():
     RPL.servoWrite(L_Pin,L_RN - 10)
     print ("Left servo step open")
@@ -41,6 +36,9 @@ old_settings = termios.tcgetattr(fd) # this records the existing console setting
 ######################################
 ## Other motor commands should go here
 ######################################
+
+def stopall():
+    pass
 
 def interrupted(signum, frame): # this is the method called at the end of the alarm
     stopAll()
