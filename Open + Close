@@ -1,0 +1,10 @@
+import RoboPiLib as RPL
+import sys, tty, termios, signal
+
+def open():
+    RPL.servoWrite(0, 500)
+    RPL.servoWrite(1, 2500)
+
+def close():
+    RPL.servoWrite(0, 950)
+    RPL.servoWrite(1, 1940)
